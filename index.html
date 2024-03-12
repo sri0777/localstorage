@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localstorage</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+    <button id="addbtn">Add Data</button>
+    <button id="getbtn">Get Data</button>
+    <button id="removebtn">Remove Data</button>
+    </div>
+    <script>
+        const obj = {
+    frstName: "Srijan",
+    lastName: "Kumar",
+    age : 20,
+    gender: "Male",
+    grade: "A",
+    courses: ["Math","Science","English"],
+    address: {
+        street:"123 Main str",
+        city: "Bandra",
+        state:"Bihar",
+        zipCode: 803101,
+    },
+        }
+const addData = ()=>{
+    localStorage.setItem("StudentData",JSON.stringify(obj));
+}
+const getData = ()=>{
+   const readData =  JSON.parse(localStorage.getItem("StudentData"));
+   console.log("Retrieved from local storage",readData)
+}
+function removeData(){
+   const removeData =  localStorage.removeItem("StudentData");
+    console.log("Data after deleted",removeData); //after deleting it will show undefined
+}
+//Add to localstorage;
+document.getElementById("addbtn").addEventListener("click",function(){
+    addData();
+})        
+document.getElementById("getbtn").addEventListener("click",function(){
+    getData();
+})        
+document.getElementById("removebtn").addEventListener("click",function(){
+    removeData();
+})        
+</script>
+</body>
+</html>
